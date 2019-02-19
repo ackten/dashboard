@@ -2,7 +2,7 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Ackten Dashboard',
+    title: 'Ackten Integrations',
     icon: 'nb-bar-chart',
     link: '/pages/ackten-dashboard',
     home: true,
