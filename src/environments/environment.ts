@@ -10,4 +10,5 @@
 
 export const environment = {
   production: false,
+  callbackURL: 'http://localhost:4200/oauth2/callback',
 };

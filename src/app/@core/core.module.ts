@@ -52,6 +52,7 @@ import { StatsProgressBarService } from './mock/stats-progress-bar.service';
 import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { environment } from '../../environments/environment.prod';
 
 
 const DATA_SERVICES = [
@@ -96,7 +97,7 @@ export const NB_CORE_PROVIDERS = [
           endpoint: 'https://ackten.auth0.com/authorize',
           responseType: NbOAuth2ResponseType.TOKEN,
           scope: 'openid',
-          redirectUri: 'http://localhost:4200/oauth2/callback',
+          redirectUri: environment.callbackURL,
         },
         redirect: {
           success: '/ackten-dashboard',
