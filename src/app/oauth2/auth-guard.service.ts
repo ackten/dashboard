@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, CanLoad } from '@angular/router';
+import { CanActivate, CanLoad } from '@angular/router';
 import { NbAuthService, NbAuthResult } from '@nebular/auth';
 import { tap } from 'rxjs/operators';
 
