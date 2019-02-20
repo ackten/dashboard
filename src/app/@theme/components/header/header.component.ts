@@ -1,9 +1,12 @@
+import { Router } from '@angular/router';
+import { NbAuthService, NbAuthResult } from '@nebular/auth';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserData } from '../../../@core/data/users';
 import { AnalyticsService } from '../../../@core/utils';
 import { LayoutService } from '../../../@core/utils';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-header',
@@ -18,12 +21,14 @@ export class HeaderComponent implements OnInit {
 
   userMenu = [
     { title: 'Profile', link: '/pages/profile' },
-    { title: 'Log out', link: '/auth/logout' },
+    { title: 'Log out', data: 'logout' },
   ];
 
   constructor(private sidebarService: NbSidebarService,
+              private nbAuthService: NbAuthService,
               private nbMenuService: NbMenuService,
               private userService: UserData,
+              private router: Router,
               private analyticsService: AnalyticsService,
               private layoutService: LayoutService) {
   }
@@ -31,6 +36,20 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsers()
       .subscribe((users: any) => this.user = users.nick);
+
+    this.nbMenuService.onItemClick()
+      .pipe(
+        filter(({ tag }) => tag === 'profile-context-menu'),
+        map(({ item: { data } }) => data),
+      )
+      .subscribe(data => {
+        if (data === 'logout' ) {
+          this.nbAuthService.logout('google')
+          .subscribe((authResult: NbAuthResult) => {
+            window.location.reload();
+          });
+        }
+      });
   }
 
   toggleSidebar(): boolean {

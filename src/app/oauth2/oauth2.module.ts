@@ -16,14 +16,13 @@ import {
 
 import {
   NbAuthModule,
-  NbOAuth2AuthStrategy,
-  NbOAuth2ResponseType,
 } from '@nebular/auth';
 
 import { OAuth2LoginComponent } from './oauth2-login.component';
 import { OAuth2CallbackComponent } from './oauth2-callback.component';
-import { Oauth2RoutingModule } from './oauth2-routing.module';
+import { OAuth2RoutingModule } from './oauth2-routing.module';
 import { AuthGuard } from './auth-guard.service';
+import { ThemeModule } from '../@theme/theme.module';
 
 
 @NgModule({
@@ -31,29 +30,12 @@ import { AuthGuard } from './auth-guard.service';
     CommonModule,
     FormsModule,
     HttpClientModule,
-
-    NbAuthModule.forRoot({
-      strategies: [
-        NbOAuth2AuthStrategy.setup({
-          name: 'google',
-          clientId: 'tBMOvxHWmiVbUlH5Ql40jT2pKxv7KYP5',
-          clientSecret: '',
-          authorize: {
-            endpoint: 'https://ackten.auth0.com/authorize',
-            responseType: NbOAuth2ResponseType.TOKEN,
-            scope: 'openid',
-            redirectUri: 'http://localhost:4200/oauth2/callback',
-          },
-          redirect: {
-            success: '/ackten-dashboard',
-          },
-        }),
-      ],
-    }),
+    ThemeModule.forRoot(),
+    NbAuthModule,
 
     NbCardModule,
     NbLayoutModule,
-    Oauth2RoutingModule,
+    OAuth2RoutingModule,
   ],
   declarations: [
     OAuth2LoginComponent,

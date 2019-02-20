@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, CanLoad } from '@angular/router';
-import { NbAuthService } from '@nebular/auth';
+import { NbAuthService, NbAuthResult } from '@nebular/auth';
 import { tap } from 'rxjs/operators';
+import { logging } from 'selenium-webdriver';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanLoad {
@@ -14,7 +15,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       .pipe(
         tap(authenticated => {
           if (!authenticated) {
-            this.router.navigate(['oauth2']);
+            this.login();
           }
         }),
       );
@@ -27,7 +28,13 @@ export class AuthGuard implements CanActivate, CanLoad {
   checkLogin(): boolean {
     if (this.authService.isAuthenticated()) { return true; }
     // Navigate to the login page with extras
-    this.router.navigate(['/oauth2']);
+    this.login();
     return false;
+  }
+
+  login() {
+    this.authService.authenticate('google')
+      .subscribe((authResult: NbAuthResult) => {
+    });
   }
 }

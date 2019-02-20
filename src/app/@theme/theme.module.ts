@@ -1,3 +1,4 @@
+import { NbAuthModule } from '@nebular/auth';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

@@ -1,6 +1,7 @@
+import { OAuth2PlaygroundModule } from './../oauth2/oauth2.module';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthModule, NbOAuth2AuthStrategy, NbOAuth2ResponseType } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -52,23 +53,6 @@ import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 
-const socialLinks = [
-  {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'socicon-github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'socicon-facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'socicon-twitter',
-  },
-];
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
@@ -103,6 +87,22 @@ export const NB_CORE_PROVIDERS = [
   ...MockDataModule.forRoot().providers,
   ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
+    strategies: [
+      NbOAuth2AuthStrategy.setup({
+        name: 'google',
+        clientId: 'tBMOvxHWmiVbUlH5Ql40jT2pKxv7KYP5',
+        clientSecret: '',
+        authorize: {
+          endpoint: 'https://ackten.auth0.com/authorize',
+          responseType: NbOAuth2ResponseType.TOKEN,
+          scope: 'openid',
+          redirectUri: 'http://localhost:4200/oauth2/callback',
+        },
+        redirect: {
+          success: '/ackten-dashboard',
+        },
+      }),
+    ],
   }).providers,
 
   NbSecurityModule.forRoot({
@@ -131,6 +131,7 @@ export const NB_CORE_PROVIDERS = [
 @NgModule({
   imports: [
     CommonModule,
+    OAuth2PlaygroundModule,
   ],
   exports: [
     NbAuthModule,
