@@ -1,5 +1,8 @@
-[![Build Status](https://travis-ci.org/JT-Bruch/ngx-admin.svg?branch=master)](https://travis-ci.org/JT-Bruch/ngx-admin)
+## Build Status
 
+1. Master = [![Build Status](https://travis-ci.org/ackten/dashboard.svg?branch=master)](https://travis-ci.org/ackten/dashboard)
+
+2. Develop = [![Build Status](https://travis-ci.org/ackten/dashboard.svg?branch=develop)](https://travis-ci.org/ackten/dashboard)
 
 # Admin template based on Angular 7+, Bootstrap 4 and <a href="https://github.com/akveo/nebular">Nebular</a>
 <a target="_blank" href="http://akveo.com/ngx-admin/#/pages/dashboard?theme=corporate&utm_source=github&utm_medium=ngx_admin_readme&utm_campaign=main_pic"><img src="https://i.imgur.com/OIL7rt8.png"/></a>
