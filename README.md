@@ -27,10 +27,6 @@
 - 40+ Angular Components
 - 60+ Usage Examples
 
-### Hot Themes Reload
-
-<a target="_blank" href="http://akveo.com/ngx-admin/#/pages/dashboard?utm_source=github&utm_medium=ngx_admin_readme&utm_campaign=demo"><img src="https://i.imgur.com/XoJtfvK.gif"/></a>
-
 ### Demo
 
 <a target="_blank" href="http://akveo.com/ngx-admin/">Live Demo</a>
