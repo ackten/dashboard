@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       .pipe(
         tap(authenticated => {
           if (!authenticated) {
-            this.router.navigate(['auth/login']);
+            this.router.navigate(['oauth2']);
           }
         }),
       );
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   checkLogin(): boolean {
     if (this.authService.isAuthenticated()) { return true; }
     // Navigate to the login page with extras
-    this.router.navigate(['/login']);
+    this.router.navigate(['/oauth2']);
     return false;
   }
 }
