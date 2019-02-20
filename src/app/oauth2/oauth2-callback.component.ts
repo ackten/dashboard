@@ -42,7 +42,12 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class OAuth2CallbackComponent implements OnDestroy {
 
-  alive = true;
+  layout: any = {};
+  sidebar: any = {};
+
+  private alive = true;
+
+  currentTheme: string;
 
   constructor(private authService: NbAuthService, private router: Router) {
     this.authService.authenticate('google')

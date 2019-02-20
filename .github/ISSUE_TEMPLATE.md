@@ -1,8 +1,3 @@
-<!--
-ATTENTION! WE WILL HAVE TO CLOSE THIS ISSUE if you don't provide the needed information.
-Please read https://github.com/akveo/ngx-admin/blob/master/CONTRIBUTING.md before opening an issue.
--->
-
 ### Issue type
 
 **I'm submitting a ...**  (check one with "x")
@@ -23,7 +18,7 @@ Please read https://github.com/akveo/ngx-admin/blob/master/CONTRIBUTING.md befor
 <!--  Please explain the steps required to duplicate the issue, especially if you are able to provide a sample application. -->
 
 **Related code:**
-<!-- 
+<!--
 If you are able to illustrate the bug or feature request with an example, please provide a sample application via one of the following means:
 
 A sample application via GitHub
