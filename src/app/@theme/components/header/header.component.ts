@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { NbAuthService, NbAuthResult } from '@nebular/auth';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -27,8 +26,7 @@ export class HeaderComponent implements OnInit {
   constructor(private sidebarService: NbSidebarService,
               private nbAuthService: NbAuthService,
               private nbMenuService: NbMenuService,
-              private userService: UserData,
-              private router: Router,
+              private userService: UserData
               private analyticsService: AnalyticsService,
               private layoutService: LayoutService) {
   }

@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, CanLoad } from '@angular/router';
 import { NbAuthService, NbAuthResult } from '@nebular/auth';
 import { tap } from 'rxjs/operators';
-import { logging } from 'selenium-webdriver';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanLoad {
 
-  constructor(private authService: NbAuthService, private router: Router) {
+  constructor(private authService: NbAuthService) {
   }
 
   canActivate() {
