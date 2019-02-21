@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { StatusDashboardComponent } from './status-dashboard/status-dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,10 +13,16 @@ const routes: Routes = [{
   children: [ {
     path: 'ackten-dashboard',
     component: AcktenDashboardComponent,
-  }, {
+  },
+  {
     path: 'status-dashboard',
     component: StatusDashboardComponent,
-  }, {
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
     path: '',
     redirectTo: 'ackten-dashboard',
     pathMatch: 'full',

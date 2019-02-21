@@ -1,4 +1,3 @@
-import { OAuth2PlaygroundModule } from './../oauth2/oauth2.module';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbOAuth2AuthStrategy, NbOAuth2ResponseType } from '@nebular/auth';
@@ -52,7 +51,9 @@ import { StatsProgressBarService } from './mock/stats-progress-bar.service';
 import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
-
+import { environment } from '../../environments/environment';
+import { AuthGuard } from './oauth2/auth-guard.service';
+import { AuthService } from './oauth2/auth.service';
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
@@ -90,13 +91,13 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbOAuth2AuthStrategy.setup({
         name: 'google',
-        clientId: 'tBMOvxHWmiVbUlH5Ql40jT2pKxv7KYP5',
+        clientId: environment.clientId,
         clientSecret: '',
         authorize: {
-          endpoint: 'https://ackten.auth0.com/authorize',
+          endpoint: environment.domain,
           responseType: NbOAuth2ResponseType.TOKEN,
-          scope: 'openid',
-          redirectUri: 'http://localhost:4200/oauth2/callback',
+          scope: 'openid profile',
+          redirectUri: environment.callbackURL,
         },
         redirect: {
           success: '/ackten-dashboard',
@@ -126,12 +127,13 @@ export const NB_CORE_PROVIDERS = [
   LayoutService,
   PlayerService,
   StateService,
+  AuthService,
+  AuthGuard,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    OAuth2PlaygroundModule,
   ],
   exports: [
     NbAuthModule,

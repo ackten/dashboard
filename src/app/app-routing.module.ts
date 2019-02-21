@@ -1,7 +1,8 @@
-import { AuthGuard } from './oauth2/auth-guard.service';
+import { AuthGuard } from './@core/oauth2/auth-guard.service';
 import { ExtraOptions, RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment.prod';
+import { OAuth2CallbackComponent } from './oauth2-callback.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,8 @@ const routes: Routes = [
     loadChildren: 'app/pages/pages.module#PagesModule',
   },
   {
-    path: 'oauth2',
-    loadChildren: './oauth2/oauth2.module#OAuth2PlaygroundModule',
+    path: 'oauth2/callback',
+    component: OAuth2CallbackComponent,
   },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
