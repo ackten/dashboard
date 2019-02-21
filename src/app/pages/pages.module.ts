@@ -6,6 +6,8 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { StatusDashboardModule } from './status-dashboard/status-dashboard.module';
+import { ProfileModule } from './profile/profile.module';
+
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -18,6 +20,7 @@ const PAGES_COMPONENTS = [
     StatusDashboardModule,
     AcktenDashboardModule,
     MiscellaneousModule,
+    ProfileModule,
   ],
   declarations: [
     ...PAGES_COMPONENTS,

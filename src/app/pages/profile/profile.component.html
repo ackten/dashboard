@@ -1,0 +1,28 @@
+<nb-layout *ngIf="(auth.userProfile) as user">
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-body>
+        <nb-user size="large"
+                  [name]="user.name"
+                  [picture]="user.picture"
+                  [title]="user.email">
+        </nb-user>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <p *ngFor="let profileProp of makeProfileArray(user)">
+          <code>{{ profileProp }}</code>
+        </p>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <p>
+          <a routerLink="/" href>Back to Home</a>
+        </p>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>
+

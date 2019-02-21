@@ -1,9 +1,8 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
 export const environment = {
   production: true,
   callbackURL: 'https://dashboard.ackten.com/oauth2/callback',
+  domain: 'ackten.auth0.com',
+  clientId: 'tBMOvxHWmiVbUlH5Ql40jT2pKxv7KYP5',
+  audience: 'https://api.ackten.com/',
+  logoutURL: 'https://dashboard.ackten.com/',
 };

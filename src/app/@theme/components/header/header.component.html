@@ -6,15 +6,13 @@
     <div class="logo" (click)="goToHome()"><span>Ackten</span></div>
   </div>
 </div>
-
-<div class="header-container">
+<div class="header-container" *ngIf="(authService.userProfile) as user">
   <nb-actions
     size="medium"
     [class.right]="position === 'normal'"
     [class.left]="position === 'inverse'">
-    <nb-action *nbIsGranted="['view', 'user']" >
+    <nb-action >
       <nb-user [nbContextMenu]="userMenu" nbContextMenuTag="profile-context-menu" [name]="user?.name" [picture]="user?.picture"></nb-user>
     </nb-action>
-
   </nb-actions>
 </div>
